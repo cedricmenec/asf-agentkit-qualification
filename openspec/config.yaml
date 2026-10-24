@@ -1,0 +1,14 @@
+schema: spec-driven
+
+context: |
+  This is a disposable public Node 22 AgentKit qualification project.
+  All examples and test inputs must remain synthetic and non-sensitive.
+  Never introduce external service calls, production deployment, credentials,
+  paid model invocations, or changes to GitHub permissions and workflows.
+
+rules:
+  proposal:
+    - State that this is a bounded qualification change.
+    - Explicitly list anything not covered by this demonstration.
+  tasks:
+    - Include native Node tests and a final npm run check validation.
