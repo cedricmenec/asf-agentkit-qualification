@@ -4,13 +4,13 @@ All checkboxes below describe work that is still pending. No unresolved requirem
 
 ## 1. Multiplication implementation
 
-- [ ] 1.1 Add the named export `multiply(left, right)` to `src/calculator.mjs`, returning the product when both operands are finite and throwing `TypeError('Expected two finite numbers')` otherwise; verify with `node --input-type=module -e "import { multiply } from './src/calculator.mjs'; if (multiply(3, 4) !== 12 || multiply(-4, 3) !== -12 || multiply(0, 7) !== 0) process.exit(1)"`.
-- [ ] 1.2 Extend `test/calculator.test.mjs` with deterministic cases for positive, negative, and zero products plus `NaN`, `Infinity`, `-Infinity`, and non-numeric operands; verify `npm test` exits 0 and the new multiplication tests are reported as passing.
+- [x] 1.1 Add the named export `multiply(left, right)` to `src/calculator.mjs`, returning the product when both operands are finite and throwing `TypeError('Expected two finite numbers')` otherwise; verify with `node --input-type=module -e "import { multiply } from './src/calculator.mjs'; if (multiply(3, 4) !== 12 || multiply(-4, 3) !== -12 || multiply(0, 7) !== 0) process.exit(1)"`.
+- [x] 1.2 Extend `test/calculator.test.mjs` with deterministic cases for positive, negative, and zero products plus `NaN`, `Infinity`, `-Infinity`, and non-numeric operands; verify `npm test` exits 0 and the new multiplication tests are reported as passing.
 
 ## 2. Qualification checks
 
-- [ ] 2.1 Run `npm ci --ignore-scripts` then `npm run check`; verify exit 0, esbuild reports the in-memory bundle as valid, and `git diff --exit-code -- package-lock.json` exits 0, confirming the lockfile is unchanged.
-- [ ] 2.2 Review the changed product files and verify no workflow, configuration, backlog, `AGENTS.md`, `package.json`, or `package-lock.json` modification is present; verify `git status --porcelain` contains no such files.
+- [x] 2.1 Run `npm ci --ignore-scripts` then `npm run check`; verify exit 0, esbuild reports the in-memory bundle as valid, and `git diff --exit-code -- package-lock.json` exits 0, confirming the lockfile is unchanged.
+- [x] 2.2 Review the changed product files and verify no workflow, configuration, backlog, `AGENTS.md`, `package.json`, or `package-lock.json` modification is present; verify `git status --porcelain` contains no such files.
 
 ## Manual acceptance
 
