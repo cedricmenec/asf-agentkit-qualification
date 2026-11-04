@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "targetRepository": "cedricmenec/asf-agentkit-qualification",
+  "defaultBranch": "main",
+  "taskPrefix": "AQ",
+  "taskDirectory": "backlog/tasks",
+  "checkScript": "check",
+  "appIdVar": "APP_ID",
+  "appPrivateKeySecret": "APP_PRIVATE_KEY",
+  "openRouterSecret": "OPENROUTER_API_KEY",
+  "mutexGroup": "agentkit-qualification-paid-v1"
+}
