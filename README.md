@@ -4,7 +4,11 @@ Petit projet de qualification **non sensible** pour l'installation et les
 évolutions de l'AgentKit OpenCode + OpenSpec dans un deuxième dépôt GitHub.
 Il ne contient aucune donnée, aucun credential et aucune intégration métier.
 
-## Baseline Node 22
+## Baseline Node 26 LTS
+
+La version de référence est Node 26.13.0, indiquée dans `.nvmrc` et la CI.
+`package.json` accepte `>=26.13.0 <27` ; `.npmrc` active `engine-strict=true`
+pour refuser une installation npm avec une version incompatible.
 
 Le projet dispose d'une fonction de calcul minimale, de tests Node intégrés
 et d'un contrôle de compilation `esbuild` déclaré en `devDependencies`.
@@ -21,7 +25,7 @@ de l'AgentKit. Les scripts npm de post-installation restent désactivés.
 
 ## Limites de cette baseline
 
-- Seul un contrôle CI Node 22 sans secret et en lecture seule est ajouté.
+- Seul un contrôle CI Node 26 sans secret et en lecture seule est ajouté.
   Aucun workflow opérationnel AgentKit ni App n'est activé par cette baseline.
 - Aucun modèle LLM n'est appelé et aucune donnée sensible n'est nécessaire.
 - L'installation du kit et tout changement de droits, secrets, rulesets ou

@@ -9,7 +9,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 
 const repository = 'cedricmenec/asf-agentkit-qualification';
 const baseSha = '0abc166db3035486e84acc3f0412e7cb03424508';
-const candidateSha = '2385ed04fecc75073522f48a9ff5ad17764f5ba3';
+const candidateSha = 'b42145dbd0ecda3f3f746256dfdee0c1e3826bdd';
 const version = '1.1.0'; // Candidate Git source, not the published release's SHA.
 const source = path.resolve(process.env.CATALOGUE_DIR);
 const target = path.resolve(process.env.TARGET_DIR);
@@ -42,6 +42,12 @@ const commit = message => {
 
 fs.mkdirSync(reportDir, { recursive: true });
 assert.equal(process.versions.node, '26.13.0');
+const targetPackage = JSON.parse(fs.readFileSync(path.join(target, 'package.json')));
+const targetPackageLock = JSON.parse(fs.readFileSync(path.join(target, 'package-lock.json')));
+assert.equal(targetPackage.engines.node, '>=26.13.0 <27');
+assert.equal(targetPackageLock.packages[''].engines.node, targetPackage.engines.node);
+assert.equal(fs.readFileSync(path.join(target, '.npmrc'), 'utf8').trim(), 'engine-strict=true');
+assert.equal(fs.readFileSync(path.join(target, '.nvmrc'), 'utf8').trim(), '26.13.0');
 assert.equal(git(source, 'rev-parse', 'HEAD'), candidateSha);
 assert.equal(git(target, 'rev-parse', 'refs/remotes/origin/main'), baseSha, 'Qualification baseline moved; review the test before proceeding');
 git(target, 'worktree', 'add', '-b', 'qualification/node-cli-rehearsal', worktree, baseSha);
@@ -119,7 +125,10 @@ const report = {
   updatedFiles: applied.updatedFiles, createdFiles: applied.createdFiles,
   changedManagedPaths: changed, managedHashesMatch: true,
   pullRequestBytesMatchRealCli: true, configurationPreserved: true,
-  existingProjectFilesPreserved: Object.keys(projectHashes).length,
+  existingProjectFilesPreservedByCli: Object.keys(projectHashes).length,
+  targetEngineRange: targetPackage.engines.node,
+  engineStrictEnabled: true,
+  runtimeConfigurationUpdatedByPr: ['package.json', 'package-lock.json', '.npmrc', '.nvmrc', '.github/workflows/check.yml', 'README.md'],
   idempotenceVerified: true, gitRollbackVerified: true,
   overlayConflictRefusedWithoutWrites: true,
   paidModelInvoked: false, settingsChanged: false, mainModified: false,
