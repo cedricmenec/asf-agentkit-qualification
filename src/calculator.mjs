@@ -11,3 +11,10 @@ export function subtract(left, right) {
   }
   return left - right;
 }
+
+export function absolute(value) {
+  if (!Number.isFinite(value)) {
+    throw new TypeError('Expected a finite number');
+  }
+  return Math.abs(value);
+}

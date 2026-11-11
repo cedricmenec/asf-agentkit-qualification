@@ -2,13 +2,13 @@
 
 ## 1. Implementation and deterministic tests
 
-- [ ] 1.1 Add and export `absolute(value)` in `src/calculator.mjs` using a `Number.isFinite` guard that throws `TypeError` for rejected input; verify the module imports and `absolute(-2)` returns `2` with `node --input-type=module -e "import { absolute } from './src/calculator.mjs'; if (absolute(-2) !== 2) process.exit(1)"`.
-- [ ] 1.2 Add deterministic native Node tests to `test/calculator.test.mjs` for positive, negative, zero, non-numeric (`'2'`, `null`, `undefined`), `NaN`, `Infinity`, and `-Infinity`; verify `npm test` exits 0 and each accepted result and each `TypeError` case is asserted.
-- [ ] 1.3 Confirm the change does not alter `add` or `subtract` behavior, `package.json`, `package-lock.json`, workflows, or configuration; verify `git diff --name-only HEAD` reports only `src/calculator.mjs`, `test/calculator.test.mjs`, and `openspec/changes/aq-010/tasks.md`.
+- [x] 1.1 Add and export `absolute(value)` in `src/calculator.mjs` using a `Number.isFinite` guard that throws `TypeError` for rejected input; verify the module imports and `absolute(-2)` returns `2` with `node --input-type=module -e "import { absolute } from './src/calculator.mjs'; if (absolute(-2) !== 2) process.exit(1)"`.
+- [x] 1.2 Add deterministic native Node tests to `test/calculator.test.mjs` for positive, negative, zero, non-numeric (`'2'`, `null`, `undefined`), `NaN`, `Infinity`, and `-Infinity`; verify `npm test` exits 0 and each accepted result and each `TypeError` case is asserted.
+- [x] 1.3 Confirm the change does not alter `add` or `subtract` behavior, `package.json`, `package-lock.json`, workflows, or configuration; verify `git diff --name-only HEAD` reports only `src/calculator.mjs`, `test/calculator.test.mjs`, and `openspec/changes/aq-010/tasks.md`.
 
 ## 2. Integration validation
 
-- [ ] 2.1 Run `npm run check` under Node 26.13.0; verify exit code 0 and that both the native test suite and the esbuild bundle check complete successfully.
+- [x] 2.1 Run `npm run check` under Node 26.13.0; verify exit code 0 and that both the native test suite and the esbuild bundle check complete successfully.
 
 ## Manual acceptance
 
